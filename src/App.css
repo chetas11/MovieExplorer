@@ -1,3 +1,7 @@
+body{
+  background-color: #fafaf6;
+}
+
 .title{
   margin-left: 80px;
 }
@@ -25,6 +29,22 @@ h6{
 
 span{
   color: #ffc60b;
+}
+
+input{
+  border-radius: 10px;
+  color: grey;
+  outline: none;
+}
+
+.searchButton{
+  color: white;
+  background-color: #ffc60b;
+  border-radius: 10px;
+  width: 230px;
+  font-weight: bolder;
+  height: 42.5px;
+   outline: none;
 }
 
 h3{
