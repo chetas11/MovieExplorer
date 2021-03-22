@@ -48,18 +48,18 @@ function Search() {
     return (
         <div>
             <h3 className=" mt-5 text-center">Explore more movies</h3><br />
-                <div className="container">
+                <div className="container-fluid">
                     <div className="row">
-                        <div className="col-1"></div>
-                        <div className="col-10">
-                            <div className="text-center p-2 mt-3" style={{background:'white', borderRadius:'10px'}}>
+                        <div className="col-2"></div>
+                        <div className="col-8">
+                            <div className="text-center mt-3 search-div">
                                 <input value={search} onChange={(e) => setSearch(e.target.value)} className="p-2 m-2" placeholder="Search Title" />
                                 <input value={year} onChange={(e) => setYear(e.target.value)} className="p-2 m-2" placeholder="Year" />
                                 <input value={imdb} onChange={(e) => setImdb(e.target.value)} className="p-2 m-2" placeholder="ID" />
                                 <button className="searchButton" onClick={getResults}>Search</button>
                             </div>
                         </div>
-                        <div className="col-1"></div>
+                        <div className="col-2"></div>
                     </div>
                 </div>
             <div className="container mt-5">

@@ -34,7 +34,9 @@ span{
 input{
   border-radius: 10px;
   color: grey;
+  background-color: #f1f6f9;
   outline: none;
+  border: none;
 }
 
 .searchButton{
@@ -44,7 +46,8 @@ input{
   width: 230px;
   font-weight: bolder;
   height: 42.5px;
-   outline: none;
+  outline: none;
+  border: none;
 }
 
 h3{
@@ -116,6 +119,14 @@ h3{
   background-color: white;
   border-radius: 10px;
 }
+
+.search-div{
+  background-color: white;
+  border:1px solid white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
 
 .card-info{
   color: grey;
