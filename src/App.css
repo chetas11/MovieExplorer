@@ -60,6 +60,26 @@ h3{
   height: 600px;
 }
 
+.details-div{
+  margin-top: 15.5%;
+  color: white;
+}
+
+.rating-div {
+  margin-top: 18%; 
+}
+
+.hide{
+  display: none;
+}
+
+.rating{
+  border: 1px solid grey;
+  padding: 5px 10px;
+  width: 150px;
+  height: 80px;
+}
+
 .carousel-content {
   position: absolute;
   bottom: 10%;
@@ -69,3 +89,46 @@ h3{
   text-shadow: 0 1px 2px rgba(0,0,0,.6);
 }
 
+.detail-banner{
+   background-image: linear-gradient(to bottom, #ffffff, #b9b9b9, #777777, #3b3b3b, #000000);
+   height: 400px;
+   position: relative;
+}
+
+.img-tile{
+  background-color: white;
+  border-radius: 10px;
+  border: none;
+  position: absolute;
+  height: 250px;
+  width: 190px;
+  left: 10%;
+  top: 50%;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.plot{
+  margin-top: 10%;
+}
+
+.movie-tile{
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  background-color: white;
+  border-radius: 10px;
+}
+
+.card-info{
+  color: grey;
+  font-weight: bold;
+}
+
+.card-info-div{
+  padding: 15px;
+  font-size: 0.85rem;
+}
+.card-img-tile{
+  width: 100%;
+  height:100%;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
