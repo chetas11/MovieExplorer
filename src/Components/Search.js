@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import Parademic from '../Images/Parademic.png'
 import Axios from 'axios'
 import Card from './Card'
 
@@ -34,7 +33,6 @@ function Search() {
             Axios.get(`https://www.omdbapi.com/?apikey=d39f7bfd&i=${imdb}`)
             .then((res)=> {
                 setData([res.data])
-                console.log(data)
             })
             }catch (error) {
                 console.error(error);
