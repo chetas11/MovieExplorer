@@ -107,7 +107,7 @@ h3{
   width: 190px;
   left: 10%;
   top: 50%;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .plot{
@@ -115,7 +115,7 @@ h3{
 }
 
 .movie-tile{
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   background-color: white;
   border-radius: 10px;
 }

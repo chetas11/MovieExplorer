@@ -4,7 +4,7 @@ import Details from './Components/Details'
 
 function App() {
   return (
-      <Banner />
+      <Details />
   );
 }
 
