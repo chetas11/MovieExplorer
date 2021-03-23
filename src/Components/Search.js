@@ -1,13 +1,20 @@
 import React, {useState} from 'react'
 import Axios from 'axios'
 import Card from './Card'
+import { useQuery, useQueryUpdate } from '../MovieContext'
+import useBookSearch from '../useSearch'
 
 function Search() {
 
     const [data, setData] = useState([]);
-    const [search, setSearch] = useState("")
     const [year, setYear] = useState()
+    const [page, setPage] = useState(1)
     const [imdb, setImdb] = useState("")
+    const search = useQuery()
+    const setSearch = useQueryUpdate()
+
+    const{ newData, hasMore} = useBookSearch(search, year)
+
     
     const getResults = () =>{
         if(search && year){
@@ -21,10 +28,11 @@ function Search() {
             }
         }else if(search){
             try{
-            Axios.get(`https://www.omdbapi.com/?apikey=d39f7bfd&s=${search}`)
-            .then((res)=> {
-                setData(res.data.Search)
-            })
+            console.log(newData, data)
+            // Axios.get(`https://www.omdbapi.com/?apikey=d39f7bfd&s=${search}&page=${page}`)
+            // .then((res)=> {
+            //     setData(res.data.Search)
+            // })
             }catch (error) {
                 console.error(error);
             }
@@ -39,9 +47,10 @@ function Search() {
             }
         }else{
             alert("Enter Title/Year to Search Or Search with IMDB ID")
-        }
-        
+        }   
     }
+
+    
 
     return (
         <div>

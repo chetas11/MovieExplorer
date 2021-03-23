@@ -1,29 +1,56 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import { useMovieId } from '../MovieContext'
+import { useHistory } from "react-router-dom";
+import Axios from 'axios'
+import Explore from './Explore'
+
+
 
 function Details() {
+    const movieID = useMovieId()
+    const history = useHistory();
+    const [movieDetails, setMovieDetails] = useState([])
+
+    useEffect(() => {
+    if(movieID){
+        try {
+        Axios.get(`https://www.omdbapi.com/?apikey=d39f7bfd&i=${movieID}&plot=full`)
+            .then((res)=> {
+            setMovieDetails(res.data)
+            })
+        }catch (error) {
+            console.error(error);
+        }  
+    }
+    },[movieID])
+
+
     return (
         <>
         <div className="detail-banner">
+            <button onClick={() => history.push("/") } className="close">X</button>
             <div className="row">
                 <div className="col-lg-3 col-md-3 col-sm-3 col-3">
-                    <div className="img-tile"></div>
+                    <div className="img-tile">
+                        <img style={{width:'100%', borderRadius:"10px"}} src={movieDetails.Poster} />
+                    </div>
                 </div>
                 <div className="details-div col-lg-5 col-md-5 col-sm-5 col-5">
-                    <h1>Avatar</h1>
-                    <h4>Directed by : James Cameron</h4>
+                    <h1>{movieDetails.Title}</h1>
+                    <h4>Directed by : {movieDetails.Director}</h4>
                     <br />
-                    <h6>102 min</h6>
-                    <h6>Action, Horror, Sci-Fi, Thriller</h6>
-                    <h6>English, Mandarin, German</h6>
+                    <h6>{movieDetails.Runtime}</h6>
+                    <h6>{movieDetails.Genre}</h6>
+                    <h6>{movieDetails.Language}</h6>
                 </div>
                 <div className="rating-div col-lg-4 col-md-4 col-sm-4 col-4">
                     <div className="row">
                         <div className = "col-3 rating">
-                            <span><h3 className="movieTitle">6.7</h3>/10<br /></span>
+                            <span><h3 className="movieTitle">{movieDetails.imdbRating}</h3>/10<br /></span>
                             <span><p>IMDB</p></span>
                         </div>
                         <div className = "col-5 rating">
-                            <span><h3 className="movieTitle">6.7</h3>/10<br /></span>
+                            <span><h3 className="movieTitle">{movieDetails.Ratings && movieDetails.Ratings[1]  ? movieDetails.Ratings[1].Value : 'NA' }</h3><br /></span>
                             <span><p>Rotten Tomato</p></span>
                         </div>
                     </div>
@@ -36,18 +63,13 @@ function Details() {
                     <h3>Plot: </h3>
                 </div>
                 <div className="col-5">
-                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. 
-                        It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years
-                     old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one
-                     of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the 
-                     cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes 
-                     from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil)
-                     by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the 
-                     Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in 
-                     section 1.10.32.
-                     The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+                    <p>{movieDetails.Plot}</p>
                 </div>
             </div>
+        </div>
+        <div className="container mt-5">
+            <h3>Explore more movies</h3>
+            <Explore year={movieDetails.Year} title={movieDetails.Title} />
         </div>
         </>
     )

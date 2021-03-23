@@ -1,10 +1,15 @@
 import React, {useState, useEffect} from 'react'
 import Axios from 'axios'
+import { useHistory } from "react-router-dom";
 import NoPicture from '../Images/NoPicture.png'
+import { useUpdateMovieId } from '../MovieContext'
+
 
 function Card({id}) {
 
     const [cardDetails, setCardDetails] = useState([])
+    const history = useHistory();
+    const setMovieID = useUpdateMovieId()
 
     useEffect(() => {
     if(id){
@@ -19,9 +24,14 @@ function Card({id}) {
     }
     },[id])
 
+    const handleClick = () => {
+        setMovieID(id)
+        history.push("/movie")
+    }
+
     return (
-            <div className="col-lg-4 col-md-4 col-sm-4 col-4">
-                <div key={id} className="movie-tile m-2">
+            <div className="col-lg-4 col-md-4 col-sm-12 col-12">
+                <div onClick={handleClick} key={id} className="movie-tile m-2">
                     <div className="row">
                         <div className="col-lg-6 col-md-6 col-sm-6 col-6 px-0">
                             <img src={cardDetails.Poster === "N/A" ? NoPicture : cardDetails.Poster } className="img-fluid card-img-tile"/>

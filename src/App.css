@@ -64,12 +64,12 @@ h3{
 }
 
 .details-div{
-  margin-top: 15.5%;
+  margin-top: 9.5%;
   color: white;
 }
 
 .rating-div {
-  margin-top: 18%; 
+  margin-top: 12%; 
 }
 
 .hide{
@@ -106,18 +106,39 @@ h3{
   height: 250px;
   width: 190px;
   left: 10%;
-  top: 50%;
+  top: 40%;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .plot{
-  margin-top: 10%;
+  margin-top: 6%;
 }
 
 .movie-tile{
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   background-color: white;
   border-radius: 10px;
+  cursor: pointer;
+}
+
+.movie-tile:hover{
+  transform: scale(1.02);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.close{
+  background-color: transparent; 
+  border-radius: 50px;
+  border:1px solid transparent;
+  outline: none;
+  font-family: Arial, Helvetica, sans-serif;
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
+  width:40px;
+  height:40px;
+  color: white;
+  opacity: 0.9;
+  font-weight: bolder;
+  margin: 30px 60px;
 }
 
 .search-div{
