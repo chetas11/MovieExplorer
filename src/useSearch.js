@@ -15,9 +15,6 @@ export default function useSearch(query, pageNumber) {
             cancelToken: new Axios.CancelToken(c => cancel = c)
         }).then(res => {
             console.log(res.data.Search)
-            setData((prevData) => {
-                return([...prevData, res.data.map(b => b.imdbID)])
-            })
             setHasMore(res.data.Search > 0)
         }).catch(e =>{
             if(Axios.isCancel(e)) return

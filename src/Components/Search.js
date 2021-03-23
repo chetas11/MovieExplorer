@@ -1,8 +1,14 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import Axios from 'axios'
 import Card from './Card'
 import { useQuery, useQueryUpdate } from '../MovieContext'
 import useBookSearch from '../useSearch'
+import useLoader from '../useLoader';
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
+
+toast.configure()
+
 
 function Search() {
 
@@ -12,41 +18,96 @@ function Search() {
     const [imdb, setImdb] = useState("")
     const search = useQuery()
     const setSearch = useQueryUpdate()
+    const [loader, showLoader, hideLoader] = useLoader()
+
+    window.onscroll = function(ev) {
+    if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
+            setPage(page+1)
+            console.log("bottom")
+        }
+    };
+
+    function notify() {
+      toast.error("Enter Title/Year to search or search with IMDB ID", { position: toast.POSITION.TOP_CENTER, autoClose:4000 })
+    }
+
+
+    useEffect(() => {
+        setData([])
+        setPage(1)
+    }, [search])
+
+
+    // useEffect(() => {
+    //     if(search){
+    //     showLoader()
+    //         try{
+    //             let cancel
+    //             Axios({
+    //                 method:'GET',
+    //                 url:'https://www.omdbapi.com/?apikey=d39f7bfd',
+    //                 params: {s: search, page: page},
+    //                 cancelToken: new Axios.CancelToken(c => cancel = c)
+    //             }).then(res => {
+    //                 setData(...data, res.data.Search)
+    //                 hideLoader()
+    //             }).catch(e =>{
+    //                 if(Axios.isCancel(e)) return
+    //             })
+    //             return () => cancel()
+    //         }catch (error) {
+    //             console.error(error);
+    //         }
+    //     }   
+    // }, [page])
 
     const{ newData, hasMore} = useBookSearch(search, year)
 
     
     const getResults = () =>{
         if(search && year){
+            showLoader()
             try{
             Axios.get(`https://www.omdbapi.com/?apikey=d39f7bfd&t=${search}&y=${year}`)
             .then((res)=> {
                 setData([res.data])
+                hideLoader()
             })
             }catch (error) {
                 console.error(error);
             }
         }else if(search){
+            showLoader()
             try{
-            console.log(newData, data)
-            // Axios.get(`https://www.omdbapi.com/?apikey=d39f7bfd&s=${search}&page=${page}`)
-            // .then((res)=> {
-            //     setData(res.data.Search)
-            // })
+                let cancel
+                Axios({
+                    method:'GET',
+                    url:'https://www.omdbapi.com/?apikey=d39f7bfd',
+                    params: {s: search, page: page},
+                    cancelToken: new Axios.CancelToken(c => cancel = c)
+                }).then(res => {
+                    setData(res.data.Search)
+                    hideLoader()
+                }).catch(e =>{
+                    if(Axios.isCancel(e)) return
+                })
+                return () => cancel()
             }catch (error) {
                 console.error(error);
             }
         }else if(imdb){
+            showLoader()
             try{
             Axios.get(`https://www.omdbapi.com/?apikey=d39f7bfd&i=${imdb}`)
             .then((res)=> {
                 setData([res.data])
+                hideLoader()
             })
             }catch (error) {
                 console.error(error);
             }
         }else{
-            alert("Enter Title/Year to Search Or Search with IMDB ID")
+            notify()
         }   
     }
 
@@ -76,6 +137,7 @@ function Search() {
                     ))} 
                 </div>
             </div>
+            {loader}
         </div>
     )
 }

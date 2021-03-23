@@ -3,6 +3,7 @@ import Axios from 'axios'
 import { useHistory } from "react-router-dom";
 import NoPicture from '../Images/NoPicture.png'
 import { useUpdateMovieId } from '../MovieContext'
+import useLoader from '../useLoader';
 
 
 function Card({id}) {
@@ -46,7 +47,7 @@ function Card({id}) {
                             {cardDetails.Genre}
                         </div>  
                     </div> 
-                </div>   
+                </div>
             </div> 
     )
 }
