@@ -3,6 +3,7 @@ import Axios from 'axios'
 import { useHistory } from "react-router-dom";
 import NoPicture from '../Images/NoPicture.png'
 import { useUpdateMovieId } from '../MovieContext'
+import env from "react-dotenv"
 
 
 
@@ -16,7 +17,7 @@ function Card({id}) {
     useEffect(() => {
     if(id){
         try {
-        Axios.get(`https://www.omdbapi.com/?apikey=${window.env.API_KEY}&i=${id}`)
+        Axios.get(`https://www.omdbapi.com/?apikey=${env.API_KEY}&i=${id}`)
             .then((res)=> {
             setCardDetails(res.data)
             })

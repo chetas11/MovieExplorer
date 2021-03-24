@@ -5,6 +5,7 @@ import { useQuery, useQueryUpdate } from '../MovieContext'
 import useLoader from '../useLoader';
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
+import env from "react-dotenv"
 
 toast.configure()
 
@@ -18,7 +19,7 @@ function Search() {
     const search = useQuery()
     const setSearch = useQueryUpdate()
     const [loader, showLoader, hideLoader] = useLoader()
-    const URL = `https://www.omdbapi.com/?apikey=${window.env.API_KEY}`
+    const URL = `https://www.omdbapi.com/?apikey=${env.API_KEY}`
 
     window.onscroll = function(ev) {
     if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight-2  && search !== "") {

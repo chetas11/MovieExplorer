@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import { useQueryUpdate } from '../MovieContext'
 import Axios from 'axios'
 import Explore from './Explore'
+import env from "react-dotenv"
 
 
 
@@ -16,7 +17,7 @@ function Details() {
     useEffect(() => {
     if(movieID){
         try {
-        Axios.get(`https://www.omdbapi.com/?apikey=${window.env.API_KEY}&i=${movieID}&plot=full`)
+        Axios.get(`https://www.omdbapi.com/?apikey=${env.API_KEY}&i=${movieID}&plot=full`)
             .then((res)=> {
             setMovieDetails(res.data)
             })

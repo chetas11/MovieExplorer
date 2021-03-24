@@ -270,6 +270,13 @@ h3{
   .title{
     margin-left: 0px;
   }
+
+  .fp-container .fp-loader {
+    top: 35%;
+    left: 30%;
+    z-index: 1000;
+    position: absolute;
+  }
 }
 
 @media only screen and (max-width: 430px) {
