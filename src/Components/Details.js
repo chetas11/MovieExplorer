@@ -30,12 +30,12 @@ function Details() {
         <div className="detail-banner">
             <button onClick={() => history.push("/") } className="close">X</button>
             <div className="row">
-                <div className="col-lg-3 col-md-3 col-sm-3 col-3">
+                <div className="col-lg-3 col-md-4 col-sm-4 col-6">
                     <div className="img-tile">
                         <img style={{width:'100%', borderRadius:"10px"}} src={movieDetails.Poster} />
                     </div>
                 </div>
-                <div className="details-div col-lg-5 col-md-5 col-sm-5 col-5">
+                <div className="details-div col-lg-5 col-md-5 col-sm-8 col-6">
                     <h1>{movieDetails.Title}</h1>
                     <h4>Directed by : {movieDetails.Director}</h4>
                     <br />
@@ -43,7 +43,7 @@ function Details() {
                     <h6>{movieDetails.Genre}</h6>
                     <h6>{movieDetails.Language}</h6>
                 </div>
-                <div className="rating-div col-lg-4 col-md-4 col-sm-4 col-4">
+                <div className="rating-div col-lg-4 col-md-2 col-sm-2">
                     <div className="row">
                         <div className = "col-3 rating">
                             <span><h3 className="movieTitle">{movieDetails.imdbRating}</h3>/10<br /></span>
@@ -59,10 +59,10 @@ function Details() {
         </div>
         <div className="container plot">
             <div className="row">
-                <div className="col-2">
+                <div className="col-lg-2 col-md-2 col-sm-3 col-3">
                     <h3>Plot: </h3>
                 </div>
-                <div className="col-5">
+                <div className="col-lg-5 col-md-6 col-sm-8 col-9">
                     <p>{movieDetails.Plot}</p>
                 </div>
             </div>

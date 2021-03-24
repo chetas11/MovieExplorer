@@ -11,13 +11,16 @@ function Card({id}) {
     const [cardDetails, setCardDetails] = useState([])
     const history = useHistory();
     const setMovieID = useUpdateMovieId()
+    const [loader, showLoader, hideLoader] = useLoader()
 
     useEffect(() => {
     if(id){
+        showLoader()
         try {
         Axios.get(`https://www.omdbapi.com/?apikey=d39f7bfd&i=${id}`)
             .then((res)=> {
             setCardDetails(res.data)
+            hideLoader()
             })
         }catch (error) {
             console.error(error);
@@ -48,6 +51,7 @@ function Card({id}) {
                         </div>  
                     </div> 
                 </div>
+                {loader}
             </div> 
     )
 }

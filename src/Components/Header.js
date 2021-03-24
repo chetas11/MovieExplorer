@@ -23,8 +23,8 @@ function Header() {
                 <h4 className="title">buyceps TEST</h4>
             </Typography>
             <div className="navlinks">
-                <Button>Login</Button>
-                <Button>Sign up</Button>
+                <a>Login</a>&nbsp;&nbsp;&nbsp;
+                <a>Sign up</a>
             </div>
             </Toolbar>
         </AppBar>

@@ -18,17 +18,17 @@ function Banner() {
         </div>
         <div className="carousel-inner">
             <div className="carousel-item active">
-            <img src={Cloverfield} className="d-block w-100" alt="..." />
+            <img src={Cloverfield} className="banner d-block w-100" alt="..." />
             <div class="carousel-content">
                 <h1 className="movieTitle">The Cloverfield Paradox</h1><h4 className="movieTitle"> (2018)</h4>
                 <h5>Directed by : Julius Onah</h5>
                 <br />
                 <div className="row">
-                    <div className="col-lg-1 col-md-1 col-sm-1 col-1">
+                    <div className="col-lg-1 col-md-1 col-sm-2 col-2">
                         <span><h3 className="movieTitle">5.5</h3>/10<br /></span>
                         <span><h5>IMDB</h5></span>
                     </div>
-                    <div className="col-lg-5 col-md-5 col-sm-5 col-5">
+                    <div className="col-lg-5 col-md-5 col-sm-6 col-9">
                         <p>Orbiting a planet on the brink of war, scientists test a device to solve an energy crisis, and end up face-to-face with a dark alternate reality.</p>
                         <button className="btn" style={{ color: 'inherit', border: '1px solid white', borderRadius: '10px' }}>know more</button>
                     </div>
@@ -40,17 +40,17 @@ function Banner() {
             </div>
             </div>
             <div className="carousel-item">
-            <img src={Escape} className="d-block w-100" alt="..." />
+            <img src={Escape} className="banner img-fluid d-block w-100" alt="..." />
             <div class="carousel-content">
                 <h1 className="movieTitle">Escape Plan</h1><h4 className="movieTitle"> (2013)</h4>
                 <h5>Directed by : Mikael Håfström</h5>
                 <br />
                 <div className="row">
-                    <div className="col-lg-1 col-md-1 col-sm-1 col-1">
+                    <div className="col-lg-1 col-md-1 col-sm-2 col-2">
                         <span><h3 className="movieTitle">6.7</h3>/10<br /></span>
                         <span><h5>IMDB</h5></span>
                     </div>
-                    <div className="col-lg-5 col-md-5 col-sm-5 col-5">
+                    <div className="col-lg-5 col-md-5 col-sm-6 col-9">
                         <p>When a structural-security authority finds himself set up and incarcerated in the world's most secret and secure prison, he has to use his skills to escape with help from the inside.</p>
                         <button className="btn" style={{ color: 'inherit', border: '1px solid white', borderRadius: '10px' }}>know more</button>
                     </div>
@@ -62,17 +62,17 @@ function Banner() {
             </div>
             </div>
             <div className="carousel-item">
-            <img src={Parademic} className="d-block w-100" alt="..." />
+            <img src={Parademic} className="banner img-fluid d-block w-100" alt="..." />
             <div class="carousel-content">
                 <h1 className="movieTitle">The Paramedic</h1><h4 className="movieTitle"> (2020)</h4>
                 <h5>Directed by : Carles Torras</h5>
                 <br />
                 <div className="row">
-                    <div className="col-lg-1 col-md-1 col-sm-1 col-1">
+                    <div className="col-lg-1 col-md-1 col-sm-2 col-2">
                         <span><h3 className="movieTitle">5.6</h3>/10<br /></span>
                         <span><h5>IMDB</h5></span>
                     </div>
-                    <div className="col-lg-5 col-md-5 col-sm-5 col-5">
+                    <div className="col-lg-5 col-md-5 col-sm-6 col-9">
                         <p>Angel works in an ambulance service. After a tragic accident, his personal life begins to deteriorate as he becomes more and more suspicious of his partner Vane.</p>
                         <button className="btn" style={{ color: 'inherit', border: '1px solid white', borderRadius: '10px' }}>know more</button>
                     </div>

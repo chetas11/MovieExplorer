@@ -1,6 +1,6 @@
 body{
   background-color: #fafaf6;
-  font-family: Oskari-G2;
+  outline: none;
 }
 
 .title{
@@ -38,13 +38,14 @@ input{
   background-color: #f1f6f9;
   outline: none;
   border: none;
+  width: 100%;
 }
 
 .searchButton{
   color: white;
   background-color: #ffc60b;
   border-radius: 10px;
-  width: 230px;
+  width: 90%;
   font-weight: bolder;
   height: 42.5px;
   outline: none;
@@ -63,6 +64,7 @@ h3{
 .carousel-item {
   height: 600px;
 }
+
 
 .details-div{
   margin-top: 9.5%;
@@ -180,4 +182,90 @@ h3{
   left: 44%;
   z-index: 1000;
   position: absolute;
+}
+
+
+@media only screen and (max-width: 1042px) {
+  .carousel-content {
+    bottom: 12% !important
+  }
+
+  .img-tile{
+    position:relative;
+    left: 5%;
+    top: 5%;
+  }
+
+  .carousel-indicators {
+    right: 0% !important;
+    left: inherit;
+    bottom: 5%;
+  }
+
+  .plot{
+    margin-top: 10%;
+  }
+}
+
+
+@media only screen and (max-width: 930px) {
+  .carousel-content {
+    bottom: 12% !important
+  }
+
+  .carousel-indicators {
+    right: 0% !important;
+    left: inherit;
+    bottom: 1%;
+  }
+}
+
+@media only screen and (max-width: 930px) {
+  .carousel-item {
+    height: 50%;
+  }
+
+  .carousel-content {
+    font-size: 0.8rem;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .banner{
+    height: 420px;
+  }
+  .searchButton{
+    margin-bottom: 10px;
+  }
+  input{
+    width: 90%;
+  }
+  .rating-div {
+    display: none;
+  }
+
+  h6{
+  margin-right: 15px;
+  }
+}
+
+@media only screen and (max-width: 625px) {
+  .banner{
+    height: 620px;
+  }
+
+  .navlinks{
+    margin-right: 5px;
+  }
+
+  .title{
+    margin-left: 0px;
+  }
+}
+
+@media only screen and (max-width: 360px) {
+    .img-tile{
+      width: 100%;
+      height: 100%;
+    }
 }

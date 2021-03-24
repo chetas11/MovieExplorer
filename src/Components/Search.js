@@ -13,6 +13,7 @@ toast.configure()
 function Search() {
 
     const [data, setData] = useState([]);
+    const [trial, setTrialData] = useState([]);
     const [year, setYear] = useState()
     const [page, setPage] = useState(1)
     const [imdb, setImdb] = useState("")
@@ -37,6 +38,16 @@ function Search() {
         setPage(1)
     }, [search])
 
+
+     useEffect(() => {
+        Axios.get(`https://www.omdbapi.com/?apikey=d39f7bfd&s=${search}&page=${page}`)
+        .then((res) => {
+            if(data.length < +res.data.totalResults){
+            setData([...data, ...res.data.Search])
+            }
+            console.log(data, res.data.totalResults, data.length) 
+        })
+    }, [page])
 
     // useEffect(() => {
     //     if(search){
@@ -121,10 +132,20 @@ function Search() {
                         <div className="col-2"></div>
                         <div className="col-8">
                             <div className="text-center mt-3 search-div">
-                                <input value={search} onChange={(e) => setSearch(e.target.value)} className="p-2 m-2" placeholder="Search Title" />
-                                <input value={year} onChange={(e) => setYear(e.target.value)} className="p-2 m-2" placeholder="Year" />
-                                <input value={imdb} onChange={(e) => setImdb(e.target.value)} className="p-2 m-2" placeholder="ID" />
-                                <button className="searchButton" onClick={getResults}>Search</button>
+                                <div className="row">
+                                    <div className="col-lg-3 col-md-3 col-sm-12 col-12">
+                                    <input value={search} onChange={(e) => setSearch(e.target.value)} className="p-2 m-2" placeholder="Search Title" />
+                                    </div>
+                                    <div className="col-lg-3 col-md-3 col-sm-12 col-12">
+                                    <input value={year} onChange={(e) => setYear(e.target.value)} className="p-2 my-2" placeholder="Year" />
+                                    </div>
+                                    <div className="col-lg-3 col-md-3 col-sm-12 col-12">
+                                    <input value={imdb} onChange={(e) => setImdb(e.target.value)} className="p-2 my-2" placeholder="ID" />
+                                    </div>
+                                    <div className="col-lg-3 col-md-3 col-sm-12 col-12">
+                                    <button className="mt-2 searchButton" onClick={getResults}>Search</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div className="col-2"></div>
