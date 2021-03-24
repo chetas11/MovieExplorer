@@ -19,7 +19,7 @@ function Banner() {
         <div className="carousel-inner">
             <div className="carousel-item active">
             <img src={Cloverfield} className="banner d-block w-100" alt="..." />
-            <div class="carousel-content">
+            <div className="carousel-content">
                 <h1 className="movieTitle">The Cloverfield Paradox</h1><h4 className="movieTitle"> (2018)</h4>
                 <h5>Directed by : Julius Onah</h5>
                 <br />
@@ -41,7 +41,7 @@ function Banner() {
             </div>
             <div className="carousel-item">
             <img src={Escape} className="banner img-fluid d-block w-100" alt="..." />
-            <div class="carousel-content">
+            <div className="carousel-content">
                 <h1 className="movieTitle">Escape Plan</h1><h4 className="movieTitle"> (2013)</h4>
                 <h5>Directed by : Mikael Håfström</h5>
                 <br />
@@ -63,7 +63,7 @@ function Banner() {
             </div>
             <div className="carousel-item">
             <img src={Parademic} className="banner img-fluid d-block w-100" alt="..." />
-            <div class="carousel-content">
+            <div className="carousel-content">
                 <h1 className="movieTitle">The Paramedic</h1><h4 className="movieTitle"> (2020)</h4>
                 <h5>Directed by : Carles Torras</h5>
                 <br />

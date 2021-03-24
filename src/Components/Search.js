@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react'
 import Axios from 'axios'
 import Card from './Card'
 import { useQuery, useQueryUpdate } from '../MovieContext'
-import useBookSearch from '../useSearch'
 import useLoader from '../useLoader';
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
@@ -13,18 +12,17 @@ toast.configure()
 function Search() {
 
     const [data, setData] = useState([]);
-    const [trial, setTrialData] = useState([]);
     const [year, setYear] = useState()
     const [page, setPage] = useState(1)
     const [imdb, setImdb] = useState("")
     const search = useQuery()
     const setSearch = useQueryUpdate()
     const [loader, showLoader, hideLoader] = useLoader()
+    const URL = `https://www.omdbapi.com/?apikey=${window.env.API_KEY}`
 
     window.onscroll = function(ev) {
-    if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
+    if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight-2  && search !== "") {
             setPage(page+1)
-            console.log("bottom")
         }
     };
 
@@ -40,50 +38,37 @@ function Search() {
 
 
      useEffect(() => {
-        Axios.get(`https://www.omdbapi.com/?apikey=d39f7bfd&s=${search}&page=${page}`)
+        try{
+        Axios.get(`${URL}&s=${search}&page=${page}`)
         .then((res) => {
             if(data.length < +res.data.totalResults){
             setData([...data, ...res.data.Search])
             }
-            console.log(data, res.data.totalResults, data.length) 
         })
+        }catch (error) {
+            console.error(error);
+        }
     }, [page])
 
-    // useEffect(() => {
-    //     if(search){
-    //     showLoader()
-    //         try{
-    //             let cancel
-    //             Axios({
-    //                 method:'GET',
-    //                 url:'https://www.omdbapi.com/?apikey=d39f7bfd',
-    //                 params: {s: search, page: page},
-    //                 cancelToken: new Axios.CancelToken(c => cancel = c)
-    //             }).then(res => {
-    //                 setData(...data, res.data.Search)
-    //                 hideLoader()
-    //             }).catch(e =>{
-    //                 if(Axios.isCancel(e)) return
-    //             })
-    //             return () => cancel()
-    //         }catch (error) {
-    //             console.error(error);
-    //         }
-    //     }   
-    // }, [page])
-
-    const{ newData, hasMore} = useBookSearch(search, year)
 
     
     const getResults = () =>{
         if(search && year){
             showLoader()
             try{
-            Axios.get(`https://www.omdbapi.com/?apikey=d39f7bfd&t=${search}&y=${year}`)
-            .then((res)=> {
-                setData([res.data])
-                hideLoader()
-            })
+            let cancel
+            Axios({
+                    method:'GET',
+                    url:URL,
+                    params: {t: search, y: year},
+                    cancelToken: new Axios.CancelToken(c => cancel = c)
+                }).then(res => {
+                    setData([res.data])
+                    hideLoader()
+                }).catch(e =>{
+                    if(Axios.isCancel(e)) return
+                })
+                return () => cancel()
             }catch (error) {
                 console.error(error);
             }
@@ -93,7 +78,7 @@ function Search() {
                 let cancel
                 Axios({
                     method:'GET',
-                    url:'https://www.omdbapi.com/?apikey=d39f7bfd',
+                    url:URL,
                     params: {s: search, page: page},
                     cancelToken: new Axios.CancelToken(c => cancel = c)
                 }).then(res => {
@@ -109,13 +94,22 @@ function Search() {
         }else if(imdb){
             showLoader()
             try{
-            Axios.get(`https://www.omdbapi.com/?apikey=d39f7bfd&i=${imdb}`)
-            .then((res)=> {
-                setData([res.data])
-                hideLoader()
-            })
+            let cancel
+            Axios({
+                    method:'GET',
+                    url:URL,
+                    params: {i: imdb},
+                    cancelToken: new Axios.CancelToken(c => cancel = c)
+                }).then(res => {
+                    setData([res.data])
+                    hideLoader()
+                }).catch(e =>{
+                    if(Axios.isCancel(e)) return
+                })
+                return () => cancel()
             }catch (error) {
                 console.error(error);
+                
             }
         }else{
             notify()
@@ -154,7 +148,7 @@ function Search() {
             <div className="container mt-5">
                 <div className="row">
                     {data === undefined ? null : data.map((item) => (
-                    <Card id={item.imdbID}/>
+                    <Card id={item.imdbID} key={item.imdbID}/>
                     ))} 
                 </div>
             </div>

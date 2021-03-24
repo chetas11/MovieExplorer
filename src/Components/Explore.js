@@ -5,13 +5,13 @@ import Card from './Card'
 
 
 
-export default function Explore({title, year}) {
+export default function Explore({year}) {
 
     const [cardDetails, setCardDetails] = useState([])
     const Query = useQuery()
 
     useEffect(() => {
-    if(year && title){
+    if(year && Query){
         try {
         Axios.get(`https://www.omdbapi.com/?apikey=d39f7bfd&s=${Query}&y=${year}`)
             .then((res)=> {
@@ -21,12 +21,12 @@ export default function Explore({title, year}) {
             console.error(error);
         }  
     }
-    },[title,year])
+    },[year])
 
     return (
         <div className="row">
             {cardDetails === undefined ? null : cardDetails.splice(0,3).map((item) => (
-            <Card id={item.imdbID}/>
+            <Card id={item.imdbID} key={item.imdbID}/>
             ))} 
         </div>
     )

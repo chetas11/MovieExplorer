@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { useMovieId } from '../MovieContext'
 import { useHistory } from "react-router-dom";
+import { useQueryUpdate } from '../MovieContext'
 import Axios from 'axios'
 import Explore from './Explore'
 
@@ -10,11 +11,12 @@ function Details() {
     const movieID = useMovieId()
     const history = useHistory();
     const [movieDetails, setMovieDetails] = useState([])
+    const setSearch = useQueryUpdate()
 
     useEffect(() => {
     if(movieID){
         try {
-        Axios.get(`https://www.omdbapi.com/?apikey=d39f7bfd&i=${movieID}&plot=full`)
+        Axios.get(`https://www.omdbapi.com/?apikey=${window.env.API_KEY}&i=${movieID}&plot=full`)
             .then((res)=> {
             setMovieDetails(res.data)
             })
@@ -24,15 +26,20 @@ function Details() {
     }
     },[movieID])
 
+    const handleClick = () => {
+        setSearch("")
+        history.push("/")
+    }
+
 
     return (
         <>
-        <div className="detail-banner">
-            <button onClick={() => history.push("/") } className="close">X</button>
+        <div className="detail-banner container-fluid">
+            <button onClick={handleClick} className="close">X</button>
             <div className="row">
                 <div className="col-lg-3 col-md-4 col-sm-4 col-6">
                     <div className="img-tile">
-                        <img style={{width:'100%', borderRadius:"10px"}} src={movieDetails.Poster} />
+                        <img className="detail-img-small" style={{width:'100%', borderRadius:"10px"}} alt="poster" src={movieDetails.Poster} />
                     </div>
                 </div>
                 <div className="details-div col-lg-5 col-md-5 col-sm-8 col-6">
@@ -69,7 +76,7 @@ function Details() {
         </div>
         <div className="container mt-5">
             <h3>Explore more movies</h3>
-            <Explore year={movieDetails.Year} title={movieDetails.Title} />
+            <Explore year={movieDetails.Year} />
         </div>
         </>
     )

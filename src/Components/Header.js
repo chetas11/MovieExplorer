@@ -3,10 +3,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   title: {
     flexGrow: 1,
   },
@@ -20,11 +19,11 @@ function Header() {
         <AppBar position="static" style={{ background: 'transparent'}}>
             <Toolbar>
             <Typography variant="h6" className={classes.title}>
-                <h4 className="title">buyceps TEST</h4>
+                <p className="title">buyceps TEST</p>
             </Typography>
             <div className="navlinks">
-                <a>Login</a>&nbsp;&nbsp;&nbsp;
-                <a>Sign up</a>
+                <small>Login</small>&nbsp;&nbsp;&nbsp;
+                <small>Sign up</small>
             </div>
             </Toolbar>
         </AppBar>

@@ -3,7 +3,8 @@ import Axios from 'axios'
 import { useHistory } from "react-router-dom";
 import NoPicture from '../Images/NoPicture.png'
 import { useUpdateMovieId } from '../MovieContext'
-import useLoader from '../useLoader';
+
+
 
 
 function Card({id}) {
@@ -11,16 +12,13 @@ function Card({id}) {
     const [cardDetails, setCardDetails] = useState([])
     const history = useHistory();
     const setMovieID = useUpdateMovieId()
-    const [loader, showLoader, hideLoader] = useLoader()
 
     useEffect(() => {
     if(id){
-        showLoader()
         try {
-        Axios.get(`https://www.omdbapi.com/?apikey=d39f7bfd&i=${id}`)
+        Axios.get(`https://www.omdbapi.com/?apikey=${window.env.API_KEY}&i=${id}`)
             .then((res)=> {
             setCardDetails(res.data)
-            hideLoader()
             })
         }catch (error) {
             console.error(error);
@@ -35,10 +33,10 @@ function Card({id}) {
 
     return (
             <div className="col-lg-4 col-md-4 col-sm-12 col-12">
-                <div onClick={handleClick} key={id} className="movie-tile m-2">
+                <div onClick={handleClick} key={cardDetails.imdbID} className="movie-tile m-2">
                     <div className="row">
                         <div className="col-lg-6 col-md-6 col-sm-6 col-6 px-0">
-                            <img src={cardDetails.Poster === "N/A" ? NoPicture : cardDetails.Poster } className="img-fluid card-img-tile"/>
+                            <img src={cardDetails.Poster === "N/A" ? NoPicture : cardDetails.Poster } alt="poster" className="img-fluid card-img-tile"/>
                         </div>
                         <div className="card-info-div col-lg-6 col-md-6 col-sm-6 col-6">
                             <h5>{cardDetails.Title}</h5><br />
@@ -51,7 +49,6 @@ function Card({id}) {
                         </div>  
                     </div> 
                 </div>
-                {loader}
             </div> 
     )
 }
