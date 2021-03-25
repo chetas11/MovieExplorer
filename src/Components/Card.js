@@ -37,7 +37,7 @@ function Card({id}) {
                 <div onClick={handleClick} key={cardDetails.imdbID} className="movie-tile m-2">
                     <div className="row">
                         <div className="col-lg-6 col-md-6 col-sm-6 col-6 px-0">
-                            <img src={cardDetails.Poster === "N/A" ? NoPicture : cardDetails.Poster } alt="poster" className="img-fluid card-img-tile"/>
+                            <img src={cardDetails.Poster === "N/A" ? NoPicture : cardDetails.Poster } alt="poster" className="card-img-tile"/>
                         </div>
                         <div className="card-info-div col-lg-6 col-md-6 col-sm-6 col-6">
                             <h5>{cardDetails.Title}</h5><br />
