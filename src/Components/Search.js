@@ -31,24 +31,27 @@ function Search() {
       toast.error("Enter Title/Year to search or search with IMDB ID", { position: toast.POSITION.TOP_CENTER, autoClose:4000 })
     }
 
-
     useEffect(() => {
         setData([])
         setPage(1)
-    }, [search])
+    }, [search, year, imdb])
+
 
 
      useEffect(() => {
-        try{
-        Axios.get(`${URL}&s=${search}&page=${page}`)
-        .then((res) => {
-            if(data.length < +res.data.totalResults){
-            setData([...data, ...res.data.Search])
+        if(!imdb && !year){
+            try{
+            Axios.get(`${URL}&s=${search}&page=${page}`)
+            .then((res) => {
+                if(data.length < +res.data.totalResults){
+                setData([...data, ...res.data.Search])
+                }
+            })
+            }catch (error) {
+                console.error(error);
             }
-        })
-        }catch (error) {
-            console.error(error);
         }
+        
     }, [page])
 
 
@@ -64,7 +67,9 @@ function Search() {
                     params: {t: search, y: year},
                     cancelToken: new Axios.CancelToken(c => cancel = c)
                 }).then(res => {
-                    setData([res.data])
+                    if(res.data.Response === "True"){
+                        setData([res.data])
+                    }
                     hideLoader()
                 }).catch(e =>{
                     if(Axios.isCancel(e)) return
@@ -102,7 +107,9 @@ function Search() {
                     params: {i: imdb},
                     cancelToken: new Axios.CancelToken(c => cancel = c)
                 }).then(res => {
-                    setData([res.data])
+                    if(res.data.Response === "True"){
+                        setData([res.data])
+                    }
                     hideLoader()
                 }).catch(e =>{
                     if(Axios.isCancel(e)) return
@@ -117,7 +124,7 @@ function Search() {
         }   
     }
 
-    
+
 
     return (
         <div>
