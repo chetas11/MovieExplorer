@@ -33,6 +33,9 @@ function Details() {
     }
 
 
+    console.log(movieDetails)
+
+
     return (
         <>
         <div className="detail-banner container-fluid">
@@ -72,6 +75,16 @@ function Details() {
                 </div>
                 <div className="col-lg-5 col-md-6 col-sm-8 col-9">
                     <p>{movieDetails.Plot}</p>
+                </div>
+            </div>
+        </div>
+        <div className="container">
+            <div className="row mt-2">
+                <div className="col-lg-2 col-md-2 col-sm-3 col-3">
+                    <h3>Actors : </h3>
+                </div>
+                <div className="col-lg-5 col-md-6 col-sm-8 col-9">
+                    <p className="mt-1">{movieDetails.Actors}</p>
                 </div>
             </div>
         </div>

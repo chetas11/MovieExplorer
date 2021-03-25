@@ -28,7 +28,7 @@ function Search() {
     };
 
     function notify() {
-      toast.error("Enter Title/Year to search or search with IMDB ID", { position: toast.POSITION.TOP_CENTER, autoClose:4000 })
+      toast.error("Enter Title & Year to search or search with IMDB ID/Title", { position: toast.POSITION.TOP_CENTER, autoClose:4000 })
     }
 
     useEffect(() => {
