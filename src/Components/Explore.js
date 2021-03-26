@@ -8,8 +8,10 @@ import env from "react-dotenv"
 export default function Explore({year}) {
 
     const [cardDetails, setCardDetails] = useState([])
-    const commonWords = ["New", "Mission", "star", "now", "night", "get", "war"]
-    let random = Math.floor(Math.random() * commonWords.length)
+    const commonWords = ["New", "Mission", "star", "now", "night", "get", "war"] // array of random words
+    let random = Math.floor(Math.random() * commonWords.length)                  // for random number       
+
+    //function to fetch the movie suggestion from same year
 
     useEffect(() => {
     if(year){

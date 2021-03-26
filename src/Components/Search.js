@@ -11,14 +11,16 @@ toast.configure()                   // to show the error message
 
 function Search() {
 
-    const [data, setData] = useState([]);           
-    const [year, setYear] = useState()
-    const [page, setPage] = useState(1)
+    const [data, setData] = useState([]);               // to store movie data      
+    const [year, setYear] = useState()                  // to store year
+    const [page, setPage] = useState(1)                 // to store page number
     const [imdb, setImdb] = useState("")
-    const search = useQuery()
+    const search = useQuery()                           // to store search query
     const setSearch = useQueryUpdate()
     const [loader, showLoader, hideLoader] = useLoader()
-    const URL = `https://www.omdbapi.com/?apikey=${env.API_KEY}`
+    const URL = `https://www.omdbapi.com/?apikey=${env.API_KEY}`        // common URL
+
+    // function to check if user is at end of the screen
 
     window.onscroll = function(ev) {
     if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight-2  && search !== "") {
@@ -26,9 +28,13 @@ function Search() {
         }
     };
 
+    // error message
+
     function notify() {
       toast.error("Enter Title & Year to search or search with IMDB ID/Title", { position: toast.POSITION.TOP_CENTER, autoClose:4000 })
     }
+
+    // clear all the results when input field changes 
 
     useEffect(() => {
         setData([])
@@ -36,6 +42,7 @@ function Search() {
     }, [search, year, imdb])
 
 
+    // Infinite scrolling to scroll results when user reach at end
 
      useEffect(() => {
         if(!imdb && !year){
@@ -54,6 +61,7 @@ function Search() {
     }, [page])
 
 
+    // funtion to fetch results when user inputs
     
     const getResults = () =>{
         if(search && year){
@@ -64,7 +72,7 @@ function Search() {
                     method:'GET',
                     url:URL,
                     params: {t: search, y: year},
-                    cancelToken: new Axios.CancelToken(c => cancel = c)
+                    cancelToken: new Axios.CancelToken(c => cancel = c) 
                 }).then(res => {
                     if(res.data.Response === "True"){
                         setData([res.data])
