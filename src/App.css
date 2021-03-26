@@ -268,12 +268,14 @@ input{
 }
 
 @media only screen and (max-width: 625px) {
-  .banner{
-    height: 620px;
-  }
 
   .navlinks{
     margin-right: 5px;
+  }
+
+  .carousel-item{
+    height: 600px;
+    background-color: black;
   }
 
   .title{
@@ -291,6 +293,10 @@ input{
 @media only screen and (max-width: 430px) {
     .img-tile{
       width: 100%;
+    }
+
+    .banner{
+      height: 380px;
     }
 
     .detail-img-small{
