@@ -1,9 +1,38 @@
+/* tags  */
+
 body{
   background-color: #fafaf6;
   outline: none;
   font-family: 'Varela Round', sans-serif;
   background-color: #f1f6f9;
 }
+
+h6{
+  display: inline;
+  margin-right: 50px;
+  font-size: 0.8rem;
+}
+
+span{
+  color: #ffc60b;
+  font-family: 'Kanit', sans-serif;
+  
+}
+
+h3{
+  font-weight: bolder;
+}
+
+input{
+  border-radius: 10px;
+  color: grey;
+  background-color: #f1f6f9;
+  outline: none;
+  border: none;
+  width: 100%;
+}
+
+/* Classes */
 
 .title{
   margin-left: 80px;
@@ -26,27 +55,6 @@ body{
   display: inline;
 }
 
-h6{
-  display: inline;
-  margin-right: 50px;
-  font-size: 0.8rem;
-}
-
-span{
-  color: #ffc60b;
-  font-family: 'Kanit', sans-serif;
-  
-}
-
-input{
-  border-radius: 10px;
-  color: grey;
-  background-color: #f1f6f9;
-  outline: none;
-  border: none;
-  width: 100%;
-}
-
 .searchButton{
   color: white;
   background-color: #ffc60b;
@@ -56,10 +64,6 @@ input{
   height: 42.5px;
   outline: none;
   border: none;
-}
-
-h3{
-  font-weight: bolder;
 }
 
 .carousel-indicators {
@@ -174,6 +178,8 @@ h3{
   border-bottom-left-radius: 10px;
 }
 
+/* loader */
+
 .fp-container {
   position: fixed;
   width: 100%;
@@ -190,6 +196,8 @@ h3{
   position: absolute;
 }
 
+
+/* Media queries for smaller screen */
 
 @media only screen and (max-width: 1042px) {
   .carousel-content {

@@ -7,12 +7,11 @@ import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 import env from "react-dotenv"
 
-toast.configure()
-
+toast.configure()                   // to show the error message
 
 function Search() {
 
-    const [data, setData] = useState([]);
+    const [data, setData] = useState([]);           
     const [year, setYear] = useState()
     const [page, setPage] = useState(1)
     const [imdb, setImdb] = useState("")

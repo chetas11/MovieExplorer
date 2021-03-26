@@ -6,15 +6,13 @@ import Axios from 'axios'
 import Explore from './Explore'
 import env from "react-dotenv"
 
-
-
 function Details() {
-    const movieID = useMovieId()
+    const movieID = useMovieId()                            
     const history = useHistory();
-    const [movieDetails, setMovieDetails] = useState([])
+    const [movieDetails, setMovieDetails] = useState([])        // to store the full details of movie
     const setSearch = useQueryUpdate()
 
-    useEffect(() => {
+    useEffect(() => {                                           // fetch request when movie id changes
     if(movieID){
         try {
         Axios.get(`https://www.omdbapi.com/?apikey=${env.API_KEY}&i=${movieID}&plot=full`)
@@ -27,14 +25,10 @@ function Details() {
     }
     },[movieID])
 
-    const handleClick = () => {
+    const handleClick = () => {                         // close button function
         setSearch("")
         history.push("/")
     }
-
-
-    console.log(movieDetails)
-
 
     return (
         <>

@@ -11,6 +11,8 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
+// Header Component
+
 function Header() {
     const classes = useStyles();
 
@@ -18,7 +20,7 @@ function Header() {
         <div className="appbar">
         <AppBar position="static" style={{ background: 'transparent'}}>
             <Toolbar>
-            <Typography variant="h6" className={classes.title}>
+            <Typography variant="h6" className={classes.title}>  
                 <p className="title">buyceps TEST</p>
             </Typography>
             <div className="navlinks">

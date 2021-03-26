@@ -5,16 +5,13 @@ import NoPicture from '../Images/NoPicture.png'
 import { useUpdateMovieId } from '../MovieContext'
 import env from "react-dotenv"
 
-
-
-
 function Card({id}) {
 
-    const [cardDetails, setCardDetails] = useState([])
+    const [cardDetails, setCardDetails] = useState([])          // to store each movie detail
     const history = useHistory();
-    const setMovieID = useUpdateMovieId()
+    const setMovieID = useUpdateMovieId()                       
 
-    useEffect(() => {
+    useEffect(() => {                                           // render each card
     if(id){
         try {
         Axios.get(`https://www.omdbapi.com/?apikey=${env.API_KEY}&i=${id}`)
@@ -25,9 +22,9 @@ function Card({id}) {
             console.error(error);
         }  
     }
-    },[id])
+    },[id]) 
 
-    const handleClick = () => {
+    const handleClick = () => {                                 // navigate to full details page
         setMovieID(id)
         history.push("/movie")
     }

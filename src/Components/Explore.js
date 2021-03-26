@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react'
 import Axios from 'axios'
-import { useQuery } from '../MovieContext'
 import Card from './Card'
 import env from "react-dotenv"
 
@@ -9,12 +8,13 @@ import env from "react-dotenv"
 export default function Explore({year}) {
 
     const [cardDetails, setCardDetails] = useState([])
-    const Query = useQuery()
+    const commonWords = ["New", "Mission", "star", "now", "night", "get", "war"]
+    let random = Math.floor(Math.random() * commonWords.length)
 
     useEffect(() => {
-    if(year && Query){
+    if(year){
         try {
-        Axios.get(`https://www.omdbapi.com/?apikey=${env.API_KEY}&s=${Query}&y=${year}`)
+        Axios.get(`https://www.omdbapi.com/?apikey=${env.API_KEY}&s=${commonWords[random]}&y=${year}`)
             .then((res)=> {
             setCardDetails(res.data.Search)
             })

@@ -5,6 +5,7 @@ import Escape from '../Images/EscapePlan.png'
 import Parademic from '../Images/Parademic.png'
 import Search from './Search'
 
+// banner component
 
 function Banner() {
     return (
