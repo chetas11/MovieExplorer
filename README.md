@@ -1,7 +1,7 @@
 # Movie Explorer
 
 #### Description - Movie Explorer app using OMDB API (The Open Movie Database) where you can search for any Movie/Tv-serie and get all the details about it like rating, cast, plot, director etc.
-**implemented with Infinite Scrolling** 
+**Implemented with Infinite Scrolling** 
 
 #### Working Link Deployed using Netlify - https://movie-explorer-chetas11.netlify.app
 
@@ -20,6 +20,7 @@
 
 
 ![Image 1](https://github.com/chetas11/MovieExplorer/blob/master/src/Images/Movie-explorer-1.png)
+
 ![Image 2](https://github.com/chetas11/MovieExplorer/blob/master/src/Images/Movie-explorer-2.png)
 
 
