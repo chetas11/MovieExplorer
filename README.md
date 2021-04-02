@@ -1,3 +1,28 @@
+# Movie Explorer
+
+#### Description - Movie Explorer app using OMDB API (The Open Movie Database) where you can search for any Movie/Tv-serie and get all the details about it like rating, cast, plot, director etc.
+**implemented with Infinite Scrolling** 
+
+#### Working Link Deployed using Netlify - https://movie-explorer-chetas11.netlify.app
+
+#### Languages used
+- HTML
+- JS
+- CSS
+- React
+- REST API
+
+#### References - 
+- https://developer.mozilla.org/en-US/
+- https://www.omdbapi.com/
+- https://getbootstrap.com/
+- https://reactwithhooks.netlify.app/
+
+
+![Image 1](https://github.com/chetas11/Zomato_Clone/blob/master/images/ZomatoAPP_Screenshot.png)
+![Image 2](https://github.com/chetas11/Zomato_Clone/blob/master/images/ZomatoAPP_Screenshot.png)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
