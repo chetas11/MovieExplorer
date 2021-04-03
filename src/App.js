@@ -19,7 +19,7 @@ function App() {
             <Route path="/error">
                   <Error />
             </Route>
-            <Route exact path="/">
+            <Route path="/">
                   <Banner />
             </Route>
           </Switch>
