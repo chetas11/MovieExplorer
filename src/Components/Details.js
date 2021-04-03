@@ -22,6 +22,8 @@ function Details() {
         }catch (error) {
             console.error(error);
         }  
+    }else{
+        history.push("/error")
     }
     },[movieID])
 
